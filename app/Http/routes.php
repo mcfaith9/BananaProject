@@ -19,6 +19,7 @@ Route::get('/home', 'HomeController@index');
 Route::resource('task', 'TaskController');
 Route::get('/create','TaskController@create');
 Route::post('/tasks','TaskController@store');
+
 //Route::get('/create', function(){
 //  return view('task.create');
 //});

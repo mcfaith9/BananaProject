@@ -112,6 +112,7 @@ body {
         <form class="login" role="form" method="POST" action="{{ url('/login') }}">
             {{ csrf_field() }}
             <p class="title">Banna Login</p>
+
             <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">    
                     <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="Email Address" autofocus>
                       <i class="fa fa-user"></i>
@@ -139,13 +140,13 @@ body {
                         </label>
                     </div>
                 </div>
-
+            <a href="{{ url('/password/reset') }}">Forgot Your Password?</a>
             <div class="form-group">
                     <button type="submit" class="btn btn-primary">
                         <i class="fa fa-btn fa-sign-in"></i> Login
                     </button>
 
-                    <a href="{{ url('/password/reset') }}">Forgot Your Password?</a>
+                    
             </div>
     </div>
 

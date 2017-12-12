@@ -24,47 +24,39 @@
 </style>
 
 <div class="container">
-    <div class="row">
-        <div class="col-md-10 col-md-offset-1">
-            <div class="panel panel-default">
-                <div class="panel-heading">My Task</div>                       
-              
-                <div class="panel-body">  
-                <a href="{{ url('/create') }}">
-                <button type="submit" class="btn btn-primary "> 
-                <i class="fa fa-btn fa-plus"></i> Add Task </button></a>    
-                 
-                <table class="table">
-                  <tr>
-                      <th>Title</th>
-                      <th>Disc</th>
-                      <th>Action</th>
-                  </tr>
+<div class="row">
+<div class="col-md-10 col-md-offset-1">
+    <div class="panel panel-default">
+        <div class="panel-heading">My Task</div>                       
+      
+        <div class="panel-body">                      
+         
+        <table class="table">
+          <tr>
+              <th>Title</th>
+              <th>Disc</th>
+              <th>Action</th>
+          </tr>
 
-                  @foreach($tasks as $task)
+          @foreach($tasks as $task)
 
-                  <tr>       
+          <tr>       
 
-                   <td class="header">{{ $task->title}}</td>
-                   <td>{{ $task->body}}</td>
-                   
-                   <td>Edit | Delete</td>
+           <td class="header">{{ $task->title}}</td>
+           <td>{{ $task->body}}</td>
+           
+           <td>Edit | Delete</td>
 
-                  </tr>
-                   
-                  @endforeach
-                </table>  
-
-                </div>                   
-            </div>  
-    </div>
+          </tr>
+           
+          @endforeach
+        </table>  
+        <a href="{{ url('/create') }}">
+        <button type="submit" class="btn btn-primary "> 
+        <i class="fa fa-btn fa-plus"></i> Add Task </button></a>                
+        </div>                   
+    </div>  
+</div>
 </div>
 
-<script>
-  
-  $('.header').click(function(){
-      $(this).nextUntil('tr.header').slideToggle(1000);
-  });
-  
-</script>
 @endsection

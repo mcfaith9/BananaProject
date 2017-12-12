@@ -17,7 +17,7 @@
                          <label for="title" class="col-md-4 control-label">Title</label>
 
                          <div class="col-md-6">
-                             <input type="text" class="form-control" name="title" value="{{ old('title') }}">
+                             <input type="text" class="form-control" name="title" value="{{ old('title') }}" autofocus>
 
                              @if ($errors->has('title'))
                                  <span class="help-block">
@@ -31,7 +31,7 @@
                          <label for="body" class="col-md-4 control-label">Body</label>
 
                          <div class="col-md-6">
-                             <textarea class="form-control" name="body"></textarea>
+                             <textarea class="form-control" name="body" autofocus></textarea>
 
                              @if ($errors->has('body'))
                                  <span class="help-block">
