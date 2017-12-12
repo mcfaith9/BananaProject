@@ -4,9 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Http\Requests;
+use App\Http\Requests\TaskRequest;
+use App\Task;
 
-class CommentsController extends Controller
+class TaskController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +16,8 @@ class CommentsController extends Controller
      */
     public function index()
     {
-        //
+        $tasks = Task::all();
+        return view('task.task', compact('tasks'));
     }
 
     /**
@@ -25,7 +27,7 @@ class CommentsController extends Controller
      */
     public function create()
     {
-        //
+        return view('task.create');
     }
 
     /**
@@ -36,7 +38,12 @@ class CommentsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      Task::create([
+       'title' => $request->input('title'),
+       'body' => $request->input('body'),
+        ]);
+
+       return redirect('task');
     }
 
     /**

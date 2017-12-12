@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Banana Project</title>
+    
+    <!-- Tab Icon-->
+    <link rel="icon" href="uploads/avatars/ninjaBanana.png" />
 
     <!-- Fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
@@ -14,11 +17,13 @@
     <!-- Styles -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
+    
+
 
     <style>
         body {
             font-family: 'Lato';
-            background-image: url('uploads/avatars/bodyBg.jpg');
+            background-image: url('img/bodyBg.jpg');
         }
 
         .fa-btn {
@@ -42,7 +47,7 @@
 
 <body style="">
     <nav class="navbar navbar-default navbar-static-top">
-    <img src="uploads/avatars/ninjaBanana.png" style="width: 100px; height: 100px; position: absolute;  border-radius: 50%; left: 10px;">
+    <img src="img/ninjaBanana.png" style="width: 100px; height: 100px; position: absolute;  border-radius: 50%; left: 10px;">
         <div class="container">
             <div class="navbar-header">
 
@@ -83,7 +88,7 @@
                             <ul class="dropdown-menu" role="menu">
                                 <li><a href="{{ url('/profile') }}"><i class="fa fa-btn fa-user"></i>Profile</a></li>
                                 <li><a href="{{ url('/dashboard') }}"><i class="fa fa-btn fa-list"></i>Dashboard</a></li>
-                                <li><a href="{{ url('/clipboard') }}"><i class="fa fa-btn fa-clipboard"></i>Clipboard</a></li>
+                                <li><a href="{{ url('/task') }}"><i class="fa fa-btn fa-clipboard"></i>Tasks</a></li>
                                 <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
                             </ul>
                         </li>

@@ -5,7 +5,7 @@
 <style>
 
 body {
-  background-image: url('uploads/avatars/bodyBg.jpg');
+  background-image: url('img/bodyBg.jpg');
   background-size: fixed;
 }
 
@@ -25,6 +25,16 @@ body {
 }
 
 .login {
+  border-radius: 2px 2px 5px 5px;
+  padding: 10px 20px 20px 20px;
+  width: 90%;
+  max-width: 320px;
+  background: #ffffff;
+  position: fixed;
+  padding-bottom: 80px;
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.3);
+}
+.button_submit {
   border-radius: 2px 2px 5px 5px;
   padding: 10px 20px 20px 20px;
   width: 90%;
