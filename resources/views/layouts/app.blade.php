@@ -22,7 +22,7 @@
 
     <style>
         body {
-            font-family: 'Lato';
+            font-family: 'Roboto', sans-serif;
         }
 
         .fa-btn {
