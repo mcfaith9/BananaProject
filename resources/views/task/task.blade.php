@@ -34,7 +34,7 @@
         <table class="table">
           <tr>
               <th>Title</th>
-              <th>Disc</th>
+              <th>Description</th>
               <th>Action</th>
           </tr>
 
@@ -42,11 +42,19 @@
 
           <tr>       
 
-           <td class="header">{{ $task->title}}</td>
-           <td>{{ $task->body}}</td>
-           
-           <td>Edit | Delete</td>
+           <td class="header">{{ $task->title }}</td>
+           <td>{{ $task->body }}</td>
 
+           <td> 
+           <ul>
+             <li><a href="{{ url('/task/'.$task->id.'/edit') }}"> <i class="fa fa-btn fa-pencil"></i>Edit Task</a></li>
+             <form action="{{ url('/task/'.$task->id) }}" method="POST" id="my_form">
+                 {{ method_field('DELETE') }}
+                 {{ csrf_field() }}
+                 <li><a href="javascript:{}" onclick="document.getElementById('my_form').submit();"> <i class="fa fa-btn fa-trash"></i>Delete Task</a></li>
+             </form>
+           </ul>
+           </td>
           </tr>
            
           @endforeach

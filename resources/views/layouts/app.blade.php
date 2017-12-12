@@ -23,7 +23,6 @@
     <style>
         body {
             font-family: 'Lato';
-            background-image: url('img/bodyBg.jpg');
         }
 
         .fa-btn {
@@ -45,9 +44,9 @@
 
 
 
-<body style="">
+<body background="{{ asset('img/bodyBg.jpg') }}">
     <nav class="navbar navbar-default navbar-static-top">
-    <img src="img/ninjaBanana.png" style="width: 100px; height: 100px; position: absolute;  border-radius: 50%; left: 10px;">
+    <img src="{{ asset('img/ninjaBanana.png') }}" style="width: 100px; height: 100px; position: absolute;  border-radius: 50%; left: 10px;">
         <div class="container">
             <div class="navbar-header">
 
