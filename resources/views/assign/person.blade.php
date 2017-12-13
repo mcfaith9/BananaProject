@@ -147,15 +147,20 @@ body {
         <input type="hidden" name="_token" value="{{csrf_token()}}">     
 </div>
 
-<div class="form-group"> 
-<label>Select Phone</label>
-
+<div class="form-group">
+<label>Select Phonebrand</label>
  <select>
- @foreach($phone as $phones)
-   <option value="{{$phones->phonemodel}}">{{$phones->phonemodel}}</option>
+ @foreach($phone as $phones)   
+     <option value="{{$phones->phonebrand}}">{{$phones->phonebrand}}</option>
  @endforeach
  </select>
 
+<label>Select Phone</label>
+ <select>
+ @foreach($phone as $phones)   
+     <option value="{{$phones->phonemodel}}">{{$phones->phonemodel}}</option>
+ @endforeach
+ </select>
 </div>
 
 <div class="form-group">
