@@ -141,11 +141,23 @@ body {
             </span>
         @endif
 </div>
-<div class="form-group">    
+<div class="form-group">  
         <label>Update Profile Image</label>
         <input type="file" name="avatar" class="btn btn-primary">
         <input type="hidden" name="_token" value="{{csrf_token()}}">     
 </div>
+
+<div class="form-group"> 
+<label>Select Phone</label>
+
+ <select>
+ @foreach($phone as $phones)
+   <option value="{{$phones->phonemodel}}">{{$phones->phonemodel}}</option>
+ @endforeach
+ </select>
+
+</div>
+
 <div class="form-group">
         <button type="submit" class="btn btn-primary">
             <i class="fa fa-btn fa-paper-plane"></i> Add Person

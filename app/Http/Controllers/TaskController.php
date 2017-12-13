@@ -43,7 +43,7 @@ class TaskController extends Controller
        'body' => $request->input('body'),
         ]);
 
-       return redirect('task');
+       return redirect('tasks');
     }
 
     /**
@@ -81,8 +81,9 @@ class TaskController extends Controller
         $task = Task::find($id);
         $task->title = $request->input('title');
         $task->body = $request->input('body');
+        $task->save();
 
-        return redirect('task');
+        return redirect('tasks');
     }
 
     /**
@@ -93,9 +94,8 @@ class TaskController extends Controller
      */
     public function destroy($id)
     {
-        $task = Task::find($id);
-        $task->delete();
-       
-        return redirect('task');
+         Task::where('id',$id)->delete();
+         return redirect('tasks');
+        
     }
 }

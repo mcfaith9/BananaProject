@@ -77,6 +77,11 @@ tr:nth-child(even){background-color: #f2f2f2}
           <th>Person Name</th>
           <th>Person Lastname</th>
           <th>Address</th>
+          <th>Phone Number</th>
+          <th>Phone Model</th>
+          <th>Phone Brand</th>
+          <th>Address</th>
+          <th>Options</th>
         </tr>
       </thead>
 </table> 
@@ -92,7 +97,20 @@ tr:nth-child(even){background-color: #f2f2f2}
           <td>{{ $person->fname }}</td>
           <td>{{ $person->lname }}</td>
           <td>{{ $person->address }}</td>
-         
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+
+          <td> 
+           <a href="" style="color: black""> <i class="fa fa-btn fa-pencil"></i>Edit Task</a>  
+            <form action="" method="POST" id="my_form">
+                {{ method_field('DELETE') }}
+                {{ csrf_field() }}
+                <a href="javascript:{}" onclick="document.getElementById('my_form').submit();" style="color: black"> <i class="fa fa-btn fa-trash"></i>Delete Task</a>
+            </form>
+          </td>
+
         </tr> 
       @empty 
         <tr>

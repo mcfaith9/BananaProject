@@ -16,18 +16,22 @@ Route::get('dashboard', function () {
 Route::get('/home', 'HomeController@index');
 
 //Taks
-Route::resource('task', 'TaskController');
+Route::get('/tasks','TaskController@index');
 Route::get('/create','TaskController@create');
 Route::post('/tasks','TaskController@store');
 Route::get('/task/{id}/edit','TaskController@edit');
 Route::put('/task/{id}','TaskController@update');
-Route::delete('/task/{id}','TaskController@destroy');
+Route::get('/task/{id}','TaskController@destroy');
 
 //Assign Phone & Person
-Route::resource('/pptable', 'PersonController');
+Route::get('/pptable', 'PersonController@index');
 Route::get('/person', 'PersonController@create');
+Route::get('/person', 'PhoneController@index');
 //Route::get('/person','PersonController@create');
 //Route::post('/pptable','PersonController@store');
 //Route::get('/task/{id}/edit','PersonController@edit');
 //Route::put('/task/{id}','PersonController@update');
 //Route::delete('/task/{id}','PersonController@destroy');
+
+Route::post('/phone','PhoneController@store');
+Route::get('/phone','PhoneController@create');

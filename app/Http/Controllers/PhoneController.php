@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Http\Requests;
+use App\Http\Requests\PhoneRequest;
+use App\Phone;
 
 class PhoneController extends Controller
 {
@@ -15,7 +16,8 @@ class PhoneController extends Controller
      */
     public function index()
     {
-        //
+        $phone = Phone::all();
+        return view('assign.person', compact('phone'));
     }
 
     /**
@@ -25,7 +27,7 @@ class PhoneController extends Controller
      */
     public function create()
     {
-        //
+        return view('assign.phone');
     }
 
     /**
@@ -34,9 +36,14 @@ class PhoneController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PhoneRequest $request)
     {
-        //
+         Phone::create([
+       'phonemodel' => $request->input('phonemodel'),
+       'phonebrand' => $request->input('phonebrand'),
+       'phonenumber' => $request->input('phonenumber'),
+        ]);
+        return redirect('phone');
     }
 
     /**

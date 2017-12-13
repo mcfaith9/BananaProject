@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use App\Http\Requests\PersonRequest;
 use App\Person;
 
-
 class PersonController extends Controller
 {
     /**
@@ -18,9 +17,9 @@ class PersonController extends Controller
     public function index()
     {
         $people = Person::all();
-        return view('assign.pptable', compact('people'));
+        return view('assign.pptable', compact('people'));        
     }
-
+   
     /**
      * Show the form for creating a new resource.
      *
@@ -39,11 +38,14 @@ class PersonController extends Controller
      */
     public function store(PersonRequest $request)
     {
+
         Person::create([
        'fname' => $request->input('fname'),
        'lname' => $request->input('lname'),
        'address' => $request->input('address'),
         ]);
+
+       // Handle upload avatar
 
        return redirect('pptable');
     }

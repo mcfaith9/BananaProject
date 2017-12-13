@@ -97,11 +97,7 @@ tr:nth-child(even){background-color: #f2f2f2}
            <a href="{{ url('/task/'.$task->id.'/edit') }}" style="color: black""> <i class="fa fa-btn fa-pencil"></i>Edit Task</a>    
           </td>
           <td>
-            <form action="{{ url('/task/'.$task->id) }}" method="POST" id="my_form">
-                {{ method_field('DELETE') }}
-                {{ csrf_field() }}
-                <a href="javascript:{}" onclick="document.getElementById('my_form').submit();" style="color: black"> <i class="fa fa-btn fa-trash"></i>Delete Task</a>
-            </form>
+            <a href="{{ url('/task/'.$task->id) }}" onclick="document.getElementById('my_form').submit();" style="color: black"> <i class="fa fa-btn fa-trash"></i>Delete Task</a>
           </td>
         </tr>           
       @endforeach

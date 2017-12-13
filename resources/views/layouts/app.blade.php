@@ -97,14 +97,14 @@ body {
                                 <a class="test" tabindex="-1" href="#"><i class="fa fa-btn fa-paperclip"></i>Assign<span class="caret"></span></a>
                                 <ul class="dropdown-menu">
                                   <li><a href="{{ url('/person') }}" tabindex="-1"><i class="fa fa-btn fa-users" aria-hidden="true"></i>Person</a></li>
-                                  <li><a href="" tabindex="-1"><i class="fa fa-btn fa-phone-square" aria-hidden="true"></i>Phone</a></li>
+                                  <li><a href="{{ url('/phone') }}" tabindex="-1"><i class="fa fa-btn fa-phone-square" aria-hidden="true"></i>Phone</a></li>
                                   <li><a href="{{ url('/pptable') }}" tabindex="-1"><i class="fa fa-btn fa-eye aria-hidden="true"></i>View</a></li>
                                 </ul>
                               </li>
 
                               <li><a href="{{ url('/profile') }}"><i class="fa fa-btn fa-user"></i>Profile</a></li>
                               <li><a href="{{ url('/dashboard') }}"><i class="fa fa-btn fa-list"></i>Dashboard</a></li>
-                              <li><a href="{{ url('/task') }}"><i class="fa fa-btn fa-tasks"></i>Tasks</a></li>
+                              <li><a href="{{ url('/tasks') }}"><i class="fa fa-btn fa-tasks"></i>Tasks</a></li>
                               <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
                             </ul>
                         </li>
