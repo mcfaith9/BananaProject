@@ -19,27 +19,35 @@
     {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
     
 
+<style>
+body {
+    font-family: 'Roboto', sans-serif;
+}
 
-    <style>
-        body {
-            font-family: 'Roboto', sans-serif;
-        }
+.fa-btn {
+    margin-right: 6px;
+}
+.navbar-default {
+    background-color: #0e1c25;
+    border-color: #0e1c25;
+}
+.navbar-brand {
+    float: left;
+    height: 50px;
+    padding: 15px 15px;
+    font-size: 20px;
+    line-height: 20px;
+}
+.dropdown-submenu {
+    position: relative;
+}
 
-        .fa-btn {
-            margin-right: 6px;
-        }
-        .navbar-default {
-            background-color: #0e1c25;
-            border-color: #0e1c25;
-        }
-        .navbar-brand {
-            float: left;
-            height: 50px;
-            padding: 15px 15px;
-            font-size: 20px;
-            line-height: 20px;
-        }
-    </style>
+.dropdown-submenu .dropdown-menu {
+    top: 0;
+    right: 100%;
+    margin-top: -1px;
+}
+</style>
 </head>
 
 
@@ -82,13 +90,21 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="position: relative; padding-left: 50px;">
                              <img src="/uploads/avatars/{{ Auth::user()->avatar }}" style="width: 32px; height: 32px; position: absolute; top: 10px; left: 10px; border-radius: 50%;">
                                 {{ Auth::user()->name }} <span class="caret"></span>
-                            </a>
+                            </a>         
 
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="{{ url('/profile') }}"><i class="fa fa-btn fa-user"></i>Profile</a></li>
-                                <li><a href="{{ url('/dashboard') }}"><i class="fa fa-btn fa-list"></i>Dashboard</a></li>
-                                <li><a href="{{ url('/task') }}"><i class="fa fa-btn fa-clipboard"></i>Tasks</a></li>
-                                <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
+                              <ul class="dropdown-menu">
+                              <li class="dropdown-submenu">
+                                <a class="test" tabindex="-1" href="#"><i class="fa fa-btn fa-paperclip"></i>Assign<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                  <li><a href="{{ url('/person') }}" tabindex="-1"><i class="fa fa-btn fa-users" aria-hidden="true"></i>Person</a></li>
+                                  <li><a href="" tabindex="-1"><i class="fa fa-btn fa-phone-square" aria-hidden="true"></i>Phone</a></li>
+                                </ul>
+                              </li>
+
+                              <li><a href="{{ url('/profile') }}"><i class="fa fa-btn fa-user"></i>Profile</a></li>
+                              <li><a href="{{ url('/dashboard') }}"><i class="fa fa-btn fa-list"></i>Dashboard</a></li>
+                              <li><a href="{{ url('/task') }}"><i class="fa fa-btn fa-tasks"></i>Tasks</a></li>
+                              <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
                             </ul>
                         </li>
                     @endif
@@ -103,5 +119,18 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js" integrity="sha384-I6F5OKECLVtK/BL+8iSLDEHowSAfUo76ZL9+kGAgTRdiByINKJaqTPH/QVNS1VDb" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
+
+<script>
+$(document).ready(function(){
+$('.dropdown-submenu a.test').on("click", function(e){
+$(this).next('ul').toggle();
+e.stopPropagation();
+e.preventDefault();
+});
+});
+</script>
+
 </body>
 </html>
+
+
