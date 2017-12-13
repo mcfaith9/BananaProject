@@ -17,8 +17,8 @@ class PersonController extends Controller
      */
     public function index()
     {
-        $person = Person::all();
-        return view('assign.person');
+        $people = Person::all();
+        return view('assign.pptable', compact('people'));
     }
 
     /**
@@ -45,7 +45,7 @@ class PersonController extends Controller
        'address' => $request->input('address'),
         ]);
 
-       return redirect('person');
+       return redirect('pptable');
     }
 
     /**
@@ -67,7 +67,7 @@ class PersonController extends Controller
      */
     public function edit($id)
     {
-        //
+       
     }
 
     /**
@@ -79,7 +79,7 @@ class PersonController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+       
     }
 
     /**
@@ -90,7 +90,6 @@ class PersonController extends Controller
      */
     public function destroy($id)
     {
-        //
+       
     }
-    
 }

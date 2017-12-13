@@ -109,7 +109,7 @@ body {
     
 <div class="wrapper">
 
-<form class="assign_person" role="form" method="POST" action="{{ url('/person') }}">
+<form class="assign_person" role="form" method="POST" action="{{ url('/pptable') }}">
 {{ csrf_field() }}
 <p class="title">Add Person</p>
 

@@ -98,6 +98,7 @@ body {
                                 <ul class="dropdown-menu">
                                   <li><a href="{{ url('/person') }}" tabindex="-1"><i class="fa fa-btn fa-users" aria-hidden="true"></i>Person</a></li>
                                   <li><a href="" tabindex="-1"><i class="fa fa-btn fa-phone-square" aria-hidden="true"></i>Phone</a></li>
+                                  <li><a href="{{ url('/pptable') }}" tabindex="-1"><i class="fa fa-btn fa-eye aria-hidden="true"></i>View</a></li>
                                 </ul>
                               </li>
 
