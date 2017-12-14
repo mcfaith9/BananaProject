@@ -19,7 +19,7 @@ class CreatePeopleTable extends Migration
             $table->string('address');
             $table->string('phonemodel');
             $table->string('phonebrand');
-            $table->string('avatar')->default('default.jpg');            
+            $table->string('avatar');            
             $table->rememberToken();
             $table->timestamps();
         });

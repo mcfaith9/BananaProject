@@ -16,8 +16,8 @@ class PhoneController extends Controller
      */
     public function index()
     {
-        $people = Person::all();
-        return view('assign.phone', compact('people'));
+        $phones = Phone::all();
+        return view('assign.phone', compact('phones'));
     }
 
     /**
@@ -38,13 +38,12 @@ class PhoneController extends Controller
      */
     public function store(PhoneRequest $request)
     {
-         Phone::create([
+        Phone::create([
        'phonemodel' => $request->input('phonemodel'),
        'phonebrand' => $request->input('phonebrand'),
        'phonenumber' => $request->input('phonenumber'),
-       'user_id' => $request->input('phonenumber')
         ]);
-        return redirect('pptable');
+        return redirect('phone');
     }
 
     /**

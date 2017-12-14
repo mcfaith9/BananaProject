@@ -109,7 +109,8 @@ body {
     
 <div class="wrapper">
 
-<form class="assign_person" role="form" method="POST" action="{{ url('/person') }}">
+<form class="assign_person" role="form" method="POST" action="{{ url('/edit/'.$person->id) }}">
+{{ method_field('PUT') }}
 {{ csrf_field() }}
 <p class="title">Add Person</p>
 
@@ -148,29 +149,7 @@ body {
 </div>
 
 <div class="form-group">
-<label>Phone Model</label>
- <select class="form-control" name="phonemodel" required="required">
-     <option value="0">None</option>
- @foreach($phones as $phone)   
-     <option value="{{$phone->phonemodel}}" name="phonemodel" id="phonemodel">{{ $phone->phonemodel }}
-     </option>
- @endforeach
- </select> 
-</div>
-
-<div class="form-group">
-<label>Phone Brand</label>
- <select class="form-control" name="phonebrand" required="required">
-     <option value="0">None</option>
- @foreach($phones as $phone)   
-     <option value="{{$phone->phonebrand}}" name="phonebrand" id="phonebrand">{{ $phone->phonebrand }}
-     </option>
- @endforeach
- </select> 
-</div>
-
-<div class="form-group">
-        <button type="submit" class="btn btn-primary">
+        <button type="submit" class="btn btn-primary" value="save">
             <i class="fa fa-btn fa-paper-plane"></i> Add Person
         </button>
 </div>

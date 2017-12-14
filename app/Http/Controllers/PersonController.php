@@ -7,8 +7,6 @@ use Illuminate\Http\Request;
 use App\Http\Requests\PersonRequest;
 use App\Person;
 use App\Phone;
-use DB;
-
 class PersonController extends Controller
 {
     /**
@@ -18,8 +16,8 @@ class PersonController extends Controller
      */
     public function index()
     {
-        // $people = Person::all();
-        // return view('assign.pptable', compact('people'));        
+        $phones = Phone::all();
+        return view('assign.person', compact('phones'));   
     }
    
     /**
@@ -41,24 +39,27 @@ class PersonController extends Controller
     public function store(PersonRequest $request)
     {
 
-        Person::create([
-       'fname' => $request->input('fname'),
-       'lname' => $request->input('lname'),
-       'address' => $request->input('address'),
-       'avatar' => $request->file('avatar'),
-        ]);
-        if($request->hasFile('avatar')){
-            $avatar = $request->file('avatar');
-            $filename = time() . '.' . $avatar->getClientOriginalExtension();
-            Image::make($avatar)->resize(300,300)->save( public_path('uploads/avatars/' .$filename));
+       $person = new Person;
 
-            $person->avatar = $filename;
-            $person->save();
-        }
-       // Handle upload avatar      
-        
+       $person->fname = $request->input('fname');
+       $person->lname = $request->input('lname');
+       $person->address = $request->input('address');
+       $person->phonemodel = $request->input('phonemodel');
+       $person->phonebrand = $request->input('phonebrand');
 
-       return redirect('phone');
+       $file = $request->file('avatar');
+
+       if($file != null){
+           $file->move(public_path().'/', $file->getClientOriginalName());
+           $person->avatar = $file->getClientOriginalName();
+       }
+       else{
+           $person->avatar = 'default.jpg';
+       }
+
+       $person->save();
+
+       return redirect('pptable');
     }
 
     /**
@@ -80,7 +81,7 @@ class PersonController extends Controller
      */
     public function edit($id)
     {
-       
+        echo "Under Construction";
     }
 
     /**
@@ -92,7 +93,15 @@ class PersonController extends Controller
      */
     public function update(Request $request, $id)
     {
-       
+
+       $person->fname = $request->input('fname');
+       $person->lname = $request->input('lname');
+       $person->address = $request->input('address');
+       $person->phonemodel = $request->input('phonemodel');
+       $person->phonebrand = $request->input('phonebrand');
+
+       $person ->save();
+       return redirect('pptable');
     }
 
     /**
@@ -106,9 +115,9 @@ class PersonController extends Controller
        Person::where('id',$id)->delete();
         return redirect('pptable');
     }
-    public function showList(){
-        $phones = Phone::all()->load('person');
-        return view('assign.pptable', compact('phones')); 
 
+    public function showList(){
+        $people = Person::all();
+        return view('assign.pptable', compact('people')); 
     }
 }

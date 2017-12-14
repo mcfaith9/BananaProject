@@ -26,8 +26,12 @@ Route::get('/task/{id}','TaskController@destroy');
 //Assign Phone & Person
 Route::get('/pptable','PersonController@showList');
 Route::get('/person', 'PersonController@create');
+Route::get('/person','PersonController@index');
 Route::post('/person', 'PersonController@store');
 Route::get('/delete/{id}','PersonController@destroy');
+Route::get('/edit/{id}/edit','PersonController@edit');
+Route::put('/edit/{id}','PersonController@update');
+
 //Route::get('/person','PersonController@create');
 //Route::post('/pptable','PersonController@store');
 //Route::get('/task/{id}/edit','PersonController@edit');

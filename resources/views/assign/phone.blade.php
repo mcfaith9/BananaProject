@@ -148,25 +148,6 @@ body {
         </button>
 </div>
 
-<div class="form-group">
-
-<label>Persons ID</label>
- <select>
-     <option value="0">None</option>
-
- @foreach($people as $person)   
-
-     <option value="{{$person->id}}" name="user_id" id="user_id" type="user_id">{{$person->id}}</option>
-
- @endforeach
- @if ($errors->has('user_id'))
-     <span class="help-block">
-         <strong>{{ $errors->first('user_id') }}</strong>
-     </span>
- @endif
- </select>
-</div>
-
 </div>
 
 </body>

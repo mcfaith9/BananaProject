@@ -6,8 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Person extends Model
 {
-	//'phonemodel','phonebrand'
-    protected $fillable = ['fname','lname', 'address'];
+    protected $fillable = ['fname','lname', 'address', 'phonemodel','phonebrand'];
 
     public function phone(){
 	return $this->hasMany('App\Phone', 'phone_id');
