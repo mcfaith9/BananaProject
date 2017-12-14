@@ -12,5 +12,5 @@ class Person extends Model
     public function phone(){
 	return $this->hasMany('App\Phone', 'phone_id');
 }
-
+    
 }

@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests\PhoneRequest;
 use App\Phone;
-
+use App\Person;
 class PhoneController extends Controller
 {
     /**
@@ -16,8 +16,8 @@ class PhoneController extends Controller
      */
     public function index()
     {
-        $phone = Phone::all();
-        return view('assign.person', compact('phone'));
+        $people = Person::all();
+        return view('assign.phone', compact('people'));
     }
 
     /**
@@ -42,8 +42,9 @@ class PhoneController extends Controller
        'phonemodel' => $request->input('phonemodel'),
        'phonebrand' => $request->input('phonebrand'),
        'phonenumber' => $request->input('phonenumber'),
+       'user_id' => $request->input('phonenumber')
         ]);
-        return redirect('phone');
+        return redirect('pptable');
     }
 
     /**

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests\PersonRequest;
 use App\Person;
+use App\Phone;
+use DB;
 
 class PersonController extends Controller
 {
@@ -16,8 +18,8 @@ class PersonController extends Controller
      */
     public function index()
     {
-        $people = Person::all();
-        return view('assign.pptable', compact('people'));        
+        // $people = Person::all();
+        // return view('assign.pptable', compact('people'));        
     }
    
     /**
@@ -44,8 +46,6 @@ class PersonController extends Controller
        'lname' => $request->input('lname'),
        'address' => $request->input('address'),
        'avatar' => $request->file('avatar'),
-       // 'phonemodel' => $request->input('phonemodel'),
-       // 'phonebrand' => $request->input('phonebrand'),
         ]);
         if($request->hasFile('avatar')){
             $avatar = $request->file('avatar');
@@ -58,7 +58,7 @@ class PersonController extends Controller
        // Handle upload avatar      
         
 
-       return redirect('pptable');
+       return redirect('phone');
     }
 
     /**
@@ -105,5 +105,10 @@ class PersonController extends Controller
     {
        Person::where('id',$id)->delete();
         return redirect('pptable');
+    }
+    public function showList(){
+        $phones = Phone::all()->load('person');
+        return view('assign.pptable', compact('phones')); 
+
     }
 }

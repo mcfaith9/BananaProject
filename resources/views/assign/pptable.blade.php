@@ -78,10 +78,9 @@ tr:nth-child(even){background-color: #f2f2f2}
           <th>Name</th>
           <th>Lastname</th>
           <th>Address</th>
-          <th>Phone Number</th>
-          <th>Phone Model</th>
           <th>Phone Brand</th>
-          <th>Address</th>
+          <th>Phone Model</th>
+          <th>Phone Number</th>
           <th>Options</th>
         </tr>
       </thead>
@@ -90,16 +89,16 @@ tr:nth-child(even){background-color: #f2f2f2}
 <div  class="tbl-content">
   <table cellpadding="0" cellspacing="0" border="0">
     <tbody>
+      @forelse($phones as $phone)
 
-      @forelse($people as $person)
+        <tr>    
+          <td><img src="/uploads/avatars/{{ $phone->person->avatar }}" style="width: 32px; height: 32px; top: 10px; left: 10px; border-radius: 50%;"/> </td>
 
-        <tr>       
-          <td><img src="/uploads/avatars/{{ $person->avatar }}" style="width: 32px; height: 32px; top: 10px; left: 10px; border-radius: 50%;"/> </td>
-          <td>{{ $person->fname }}</td>
-          <td>{{ $person->lname }}</td>
-          <td>{{ $person->address }}</td>
-          <td>{{ $person->phonemodel }}</td>
-          <td>{{ $person->phonebrand }}</td>
+          <td>{{ $phone->person->fname }}</td>
+          <td>{{ $phone->person->lname }}</td>
+          <td>{{ $phone->person->address }}</td>
+          <td>{{ $phone->phonebrand }}</td>
+          <td>{{ $phone->phonemodel }}</td>          
           <td></td>
           <td></td>
 
@@ -108,7 +107,7 @@ tr:nth-child(even){background-color: #f2f2f2}
             <form action="" method="POST" id="delete">
                 {{ method_field('DELETE') }}
                 {{ csrf_field() }}
-                <a href="{{ url('/delete/'.$person->id) }}" onclick="document.getElementById('delete').submit();" style="color: black"> <i class="fa fa-btn fa-trash"></i>Delete Task</a>
+                <a href="{{ url('/delete/'.$phone->id) }}" onclick="document.getElementById('delete').submit();" style="color: black"> <i class="fa fa-btn fa-trash"></i>Delete Task</a>
             </form>
           </td>
 

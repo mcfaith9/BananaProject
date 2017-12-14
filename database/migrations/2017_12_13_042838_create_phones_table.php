@@ -17,6 +17,7 @@ class CreatePhonesTable extends Migration
             $table->string('phonemodel');
             $table->string('phonebrand');
             $table->integer('phonenumber');
+            $table->integer('user_id');
             $table->timestamps();
         });
     }

@@ -147,37 +147,6 @@ body {
         <input type="hidden" name="_token" value="{{csrf_token()}}">     
 </div>
 
-<div class="form-group{{ $errors->has('phonebrand') ? ' has-error' : '' }}">
-
-<label>Select Phonebrand</label>
- <select>
-     <option value="0">None</option>
- @foreach($phone as $phones)   
-     <option value="{{$phones->phonebrand}}" name="phonebrand" id="phonebrand" type="phonebrand">{{$phones->phonebrand}}</option>
-
- @endforeach
- @if ($errors->has('phonebrand'))
-     <span class="help-block">
-         <strong>{{ $errors->first('phonebrand') }}</strong>
-     </span>
- @endif
- </select>
-
-<label>Select Phonemodel</label>
- <select>
-     <option value="0">None</option>
- @foreach($phone as $phones)   
-     <option value="{{$phones->phonemodel}}" name="phonemodel" id="phonemodel" type="phonemodel">{{$phones->phonemodel}}</option>
- @endforeach
-     
- @if ($errors->has('phonemodel'))
-     <span class="help-block">
-         <strong>{{ $errors->first('phonemodel') }}</strong>
-     </span>
- @endif
- </select>
-</div>
-
 <div class="form-group">
         <button type="submit" class="btn btn-primary">
             <i class="fa fa-btn fa-paper-plane"></i> Add Person
