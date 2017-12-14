@@ -27,6 +27,8 @@ Route::get('/task/{id}','TaskController@destroy');
 Route::get('/pptable', 'PersonController@index');
 Route::get('/person', 'PersonController@create');
 Route::get('/person', 'PhoneController@index');
+Route::post('/person', 'PersonController@store');
+Route::get('/delete/{id}','PersonController@destroy');
 //Route::get('/person','PersonController@create');
 //Route::post('/pptable','PersonController@store');
 //Route::get('/task/{id}/edit','PersonController@edit');

@@ -26,7 +26,9 @@ class PersonRequest extends Request
         return [
             'fname' => 'required',
             'lname' => 'required',
-            'address' => 'required'
+            'address' => 'required',
+            // 'phonemodel' => 'required',
+            // 'phonebrand' => 'required',
         ];
     }
 }

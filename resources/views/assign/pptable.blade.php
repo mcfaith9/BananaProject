@@ -74,8 +74,9 @@ tr:nth-child(even){background-color: #f2f2f2}
 <table cellpadding="0" cellspacing="0" border="0">
       <thead>
         <tr>
-          <th>Person Name</th>
-          <th>Person Lastname</th>
+          <th>Image</th>
+          <th>Name</th>
+          <th>Lastname</th>
           <th>Address</th>
           <th>Phone Number</th>
           <th>Phone Model</th>
@@ -93,21 +94,21 @@ tr:nth-child(even){background-color: #f2f2f2}
       @forelse($people as $person)
 
         <tr>       
-
+          <td><img src="/uploads/avatars/{{ $person->avatar }}" style="width: 32px; height: 32px; top: 10px; left: 10px; border-radius: 50%;"/> </td>
           <td>{{ $person->fname }}</td>
           <td>{{ $person->lname }}</td>
           <td>{{ $person->address }}</td>
-          <td></td>
-          <td></td>
+          <td>{{ $person->phonemodel }}</td>
+          <td>{{ $person->phonebrand }}</td>
           <td></td>
           <td></td>
 
           <td> 
            <a href="" style="color: black""> <i class="fa fa-btn fa-pencil"></i>Edit Task</a>  
-            <form action="" method="POST" id="my_form">
+            <form action="" method="POST" id="delete">
                 {{ method_field('DELETE') }}
                 {{ csrf_field() }}
-                <a href="javascript:{}" onclick="document.getElementById('my_form').submit();" style="color: black"> <i class="fa fa-btn fa-trash"></i>Delete Task</a>
+                <a href="{{ url('/delete/'.$person->id) }}" onclick="document.getElementById('delete').submit();" style="color: black"> <i class="fa fa-btn fa-trash"></i>Delete Task</a>
             </form>
           </td>
 
@@ -125,5 +126,9 @@ tr:nth-child(even){background-color: #f2f2f2}
 <a href="{{ url('/person') }}">
  <button type="submit" class="btn btn-primary "> 
 <i class="fa fa-btn fa-plus"></i> Add People </button></a>
+
+<a href="{{ url('/phone') }}">
+ <button type="submit" class="btn btn-primary "> 
+<i class="fa fa-btn fa-plus"></i> Add Phone </button></a>
 </section>
 @endsection

@@ -114,7 +114,7 @@ body {
             <p class="title">Banna Login</p>
 
             <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">    
-                    <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="Email Address" autofocus>
+                    <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="Email Address">
                       <i class="fa fa-user"></i>
                     @if ($errors->has('email'))
                         <span class="help-block">
@@ -124,7 +124,7 @@ body {
             </div>
 
             <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                    <input id="password" type="password" class="form-control" name="password" placeholder="Password" autofocus>
+                    <input id="password" type="password" class="form-control" name="password" placeholder="Password">
                       <i class="fa fa-key"></i>
                     @if ($errors->has('password'))
                         <span class="help-block">

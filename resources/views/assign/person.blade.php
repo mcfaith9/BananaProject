@@ -109,7 +109,7 @@ body {
     
 <div class="wrapper">
 
-<form class="assign_person" role="form" method="POST" action="{{ url('/pptable') }}">
+<form class="assign_person" role="form" method="POST" action="{{ url('/person') }}">
 {{ csrf_field() }}
 <p class="title">Add Person</p>
 
@@ -123,7 +123,7 @@ body {
         @endif
 </div>
 <div class="form-group{{ $errors->has('lname') ? ' has-error' : '' }}">    
-        <input id="lname" type="fname" class="form-control" name="lname" value="{{ old('fname') }}" placeholder="Last Name" autofocus>
+        <input id="lname" type="lname" class="form-control" name="lname" value="{{ old('lname') }}" placeholder="Last Name" autofocus>
           <i class="fa fa-user"></i>
         @if ($errors->has('lname'))
             <span class="help-block">
@@ -135,31 +135,46 @@ body {
 <div class="form-group{{ $errors->has('address') ? ' has-error' : '' }}">    
         <input id="address" type="address" class="form-control" name="address" value="{{ old('address') }}" placeholder="Address" autofocus>
           <i class="fa fa-user"></i>
-        @if ($errors->has('lname'))
+        @if ($errors->has('address'))
             <span class="help-block">
-                <strong>{{ $errors->first('lname') }}</strong>
+                <strong>{{ $errors->first('address') }}</strong>
             </span>
         @endif
 </div>
-<div class="form-group">  
-        <label>Update Profile Image</label>
+<div class="form-group">          
+        <label>Upload Profile Image</label>
         <input type="file" name="avatar" class="btn btn-primary">
         <input type="hidden" name="_token" value="{{csrf_token()}}">     
 </div>
 
-<div class="form-group">
+<div class="form-group{{ $errors->has('phonebrand') ? ' has-error' : '' }}">
+
 <label>Select Phonebrand</label>
  <select>
+     <option value="0">None</option>
  @foreach($phone as $phones)   
-     <option value="{{$phones->phonebrand}}">{{$phones->phonebrand}}</option>
+     <option value="{{$phones->phonebrand}}" name="phonebrand" id="phonebrand" type="phonebrand">{{$phones->phonebrand}}</option>
+
  @endforeach
+ @if ($errors->has('phonebrand'))
+     <span class="help-block">
+         <strong>{{ $errors->first('phonebrand') }}</strong>
+     </span>
+ @endif
  </select>
 
-<label>Select Phone</label>
+<label>Select Phonemodel</label>
  <select>
+     <option value="0">None</option>
  @foreach($phone as $phones)   
-     <option value="{{$phones->phonemodel}}">{{$phones->phonemodel}}</option>
+     <option value="{{$phones->phonemodel}}" name="phonemodel" id="phonemodel" type="phonemodel">{{$phones->phonemodel}}</option>
  @endforeach
+     
+ @if ($errors->has('phonemodel'))
+     <span class="help-block">
+         <strong>{{ $errors->first('phonemodel') }}</strong>
+     </span>
+ @endif
  </select>
 </div>
 

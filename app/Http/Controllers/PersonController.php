@@ -43,9 +43,20 @@ class PersonController extends Controller
        'fname' => $request->input('fname'),
        'lname' => $request->input('lname'),
        'address' => $request->input('address'),
+       'avatar' => $request->file('avatar'),
+       // 'phonemodel' => $request->input('phonemodel'),
+       // 'phonebrand' => $request->input('phonebrand'),
         ]);
+        if($request->hasFile('avatar')){
+            $avatar = $request->file('avatar');
+            $filename = time() . '.' . $avatar->getClientOriginalExtension();
+            Image::make($avatar)->resize(300,300)->save( public_path('uploads/avatars/' .$filename));
 
-       // Handle upload avatar
+            $person->avatar = $filename;
+            $person->save();
+        }
+       // Handle upload avatar      
+        
 
        return redirect('pptable');
     }
@@ -92,6 +103,7 @@ class PersonController extends Controller
      */
     public function destroy($id)
     {
-       
+       Person::where('id',$id)->delete();
+        return redirect('pptable');
     }
 }
