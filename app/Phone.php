@@ -10,7 +10,7 @@ class Phone extends Model
     protected $primaryKey = 'phone_id';
 
     public function person(){
-	return $this->belongsTo('App\Person', 'phone_id');
+	return $this->belongsTo('App\Person', 'id');
 }
 
 }

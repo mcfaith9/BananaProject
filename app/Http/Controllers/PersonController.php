@@ -93,7 +93,15 @@ class PersonController extends Controller
      */
     public function update(Request $request, $id)
     {
-
+       Task::create([
+       'fname' => $request->input('fname'),
+         'lname' => $request->input('lname'),
+         'address' => $request->input('address'),
+         'avatar' => $request->file('avatar'),
+         'phonemodel' => $request->input('phonemodel'),
+         'phonebrand' => $request->input('phonebrand'),
+          ]);
+       
        $person->fname = $request->input('fname');
        $person->lname = $request->input('lname');
        $person->address = $request->input('address');
