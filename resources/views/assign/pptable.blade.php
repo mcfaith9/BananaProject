@@ -87,16 +87,28 @@ tr:nth-child(even){background-color: #f2f2f2}
 <div  class="tbl-content">
   <table cellpadding="0" cellspacing="0" border="0">
     <tbody>
-      @foreach($phones as $phone)
-        <tr>    
-          <td><img src="/uploads/avatars/{{ $phone->person ? $phone->person->avatar : 'default.jpg' }}" style=" height: 32px;  border-radius: 50%;"/> </td>
+      @foreach($assigns as $assign)
+      
+        @foreach($people as $persons)
 
-          <td>{{ $phone->person ? $phone->person->fname : 'No Owner' }}</td>
-          <td>{{ $phone->person ? $phone->person->lname : 'No Owner' }}</td>
-          <td>{{ $phone->person ? $phone->person->address : 'No Owner' }}</td>
-          <td>{{ $phone->phonebrand }}</td>
-          <td>{{ $phone->phonemodel }}</td>   
-        </tr>        
+        @foreach($phones as $phone)
+       @if($phone->id == $assign->phone_id)
+      @if($persons->id == $assign->person_id)
+
+        <tr>    
+        <td><img src="/uploads/avatars/{{ $persons->avatar }}" style=" height: 32px;  border-radius: 50%;"/></td>
+        <td>{{$persons->fname}}</td>
+        <td>{{$persons->lname}}</td>
+        <td>{{$persons->address}}</td>  
+        <td>{{$phone->phonebrand}}</td>  
+        <td>{{$phone->phonemodel}}</td> 
+       </tr> 
+
+       @endif  
+      @endif 
+
+      @endforeach
+      @endforeach
       @endforeach
                  
     </tbody>
@@ -139,9 +151,7 @@ tr:nth-child(even){background-color: #f2f2f2}
   </button>
 
   <input type="hidden" name="phone_id" id="nameplate" value="1">
-  <input type="hidden" name="person_id" id="nameplate1" value="1">
 
-  <input type="hidden" name="id" id="person_id" value="1">
   <input type="hidden" name="id" id="person_id" value="1">
 
   </form>
@@ -155,7 +165,6 @@ tr:nth-child(even){background-color: #f2f2f2}
 function myFunction1() {
    var x = document.getElementById("mySelect").value;
    document.getElementById("nameplate").value = x;
-   document.getElementById("nameplate1").value = x;
 }
 
 function myFunction2() {

@@ -9,7 +9,7 @@ class Phone extends Model
     protected $fillable = ['phonemodel','phonebrand','phonenumber'];
 
     public function person(){
-	return $this->belongsTo('App\Person');
+	return $this->hasMany('App\Assign', 'phone_id');
 }
 
 }

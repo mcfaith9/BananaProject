@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\PersonRequest;
 use App\Person;
 use App\Phone;
+use App\Assign;
 class PersonController extends Controller
 {
     /**
@@ -18,7 +19,8 @@ class PersonController extends Controller
     {
         $phones = Phone::all();
         $people = Person::all();
-        return view('assign.pptable', compact('phones','people'));   
+        $assigns = Assign::all();
+        return view('assign.pptable', compact('phones','people','assigns'));   
     }
    
     /**
@@ -107,20 +109,28 @@ class PersonController extends Controller
     }
 
     public function showList(){
-        $phones = Phone::all();
-        return view('assign.pptable', compact('phones'));    
+
+        $assigns = Assign::all();
+        return view('assign.pptable', compact('assigns'));    
     }
 
     public function assign(Request $request)
     {
-        $update_phone_id = Person::find($request->input('id'));
-        $update_phone_id->phone_id = $request->input('phone_id');
+        $assign = new Assign;
 
+        $assign->person_id = $request->input('id');
+        $assign->phone_id = $request->input('phone_id');
 
-        $update_person_id = Phone::find($request->input('id'));
-        $update_person_id->person_id = $request->input('person_id');
-        $update_person_id->save();
-        $update_phone_id->save();
+        $assign->save();
         return redirect('pptable');
+        // $update_phone_id = Person::find($request->input('id'));
+        // $update_phone_id->phone_id = $request->input('phone_id');
+
+
+        // $update_person_id = Phone::find($request->input('id'));
+        // $update_person_id->person_id = $request->input('person_id');
+        // $update_person_id->save();
+        // $update_phone_id->save();
+        // return redirect('pptable');
     }
 }

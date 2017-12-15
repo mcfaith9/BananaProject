@@ -9,7 +9,7 @@ class Person extends Model
     protected $fillable = ['fname','lname', 'address', 'phone_id'];
 
     public function phone(){
-	return $this->hasMany('App\Phone', 'person_id');
+	return $this->hasMany('App\Assign','person_id');
 }
     
 }
