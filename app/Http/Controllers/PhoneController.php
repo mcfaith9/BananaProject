@@ -41,7 +41,7 @@ class PhoneController extends Controller
         Phone::create([
        'phonemodel' => $request->input('phonemodel'),
        'phonebrand' => $request->input('phonebrand'),
-       'phonenumber' => $request->input('phonenumber'),
+       'phonenumber' => $request->input('phonenumber')
         ]);
         return redirect('phone');
     }

@@ -88,22 +88,22 @@ tr:nth-child(even){background-color: #f2f2f2}
 <div  class="tbl-content">
   <table cellpadding="0" cellspacing="0" border="0">
     <tbody>
-      @forelse($people as $person)
+      @forelse($phones as $phone)
         <tr>    
-          <td><img src="/uploads/avatars/{{ $person->avatar }}" style=" height: 32px;  border-radius: 50%;"/> </td>
+          <td><img src="/uploads/avatars/{{ $phone->person->avatar }}" style=" height: 32px;  border-radius: 50%;"/> </td>
 
-          <td>{{ $person->fname }}</td>
-          <td>{{ $person->lname }}</td>
-          <td>{{ $person->address }}</td>
-          <td>{{ $person->phonebrand }}</td>
-          <td>{{ $person->phonemodel }}</td>  
+          <td>{{ $phone->person->fname }}</td>
+          <td>{{ $phone->person->lname }}</td>
+          <td>{{ $phone->person->address }}</td>
+          <td>{{ $phone->phonebrand }}</td>
+          <td>{{ $phone->phonemodel }}</td>  
 
           <td> 
-           <a href="{{ url('/edit/'.$person->id.'/edit') }}"" style="color: black""> <i class="fa fa-btn fa-pencil"></i>Edit Task</a>  
+           <a href="{{ url('/edit/'.$phone->person->id.'/edit') }}"" style="color: black""> <i class="fa fa-btn fa-pencil"></i>Edit Task</a>  
             <form action="" method="POST" id="delete">
                 {{ method_field('DELETE') }}
                 {{ csrf_field() }}
-                <a href="{{ url('/delete/'.$person->id) }}" onclick="document.getElementById('delete').submit();" style="color: black"> <i class="fa fa-btn fa-trash"></i>Delete Task</a>
+                <a href="{{ url('/delete/'.$phone->person->id) }}" onclick="document.getElementById('delete').submit();" style="color: black"> <i class="fa fa-btn fa-trash"></i>Delete Task</a>
             </form>
           </td>
 
@@ -113,7 +113,6 @@ tr:nth-child(even){background-color: #f2f2f2}
           <td colspan="3">No Data</td>
         </tr>         
       @endforelse
-
                  
     </tbody>
   </table>
@@ -126,4 +125,55 @@ tr:nth-child(even){background-color: #f2f2f2}
  <button type="submit" class="btn btn-primary "> 
 <i class="fa fa-btn fa-plus"></i> Add Phone </button></a>
 </section>
+
+
+
+<div>
+
+<form class="assign_person" role="form" method="POST" action="{{ url('/assign') }}">
+{{ csrf_field() }}
+
+<label>Phone Model</label>
+ <select id="mySelect" onchange="myFunction1()">
+ @foreach($phones as $phone)   
+     <option value="{{$phone->id}}">{{ $phone->phonemodel }}
+     </option>
+ @endforeach
+ </select> 
+
+ <label>Assign Phone to Person</label>
+ <select id="mySelect2" onchange="myFunction2()">
+ @foreach($people as $person)   
+     <option value="{{$person->phone_id}}" name="" id="">{{ $person->fname }}
+     </option>
+ @endforeach
+ </select> 
+
+   <button type="submit" class="btn btn-primary">
+            <i class="fa fa-btn fa-paper-plane"></i> Assign
+  </button>
+
+  <input type="text" name="phone_id" id="nameplate" value="1">
+
+
+  <input type="text" name="id" id="person_id" value="1">
+  </form>
+
+</div>
+
+
+
+
+<script type="text/javascript">
+function myFunction1() {
+   var x = document.getElementById("mySelect").value;
+   document.getElementById("nameplate").value = x;
+}
+
+function myFunction2() {
+   var x = document.getElementById("mySelect2").value;
+   document.getElementById("person_id").value = x;
+}
+</script>
+
 @endsection

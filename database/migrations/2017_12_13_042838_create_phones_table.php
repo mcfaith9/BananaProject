@@ -14,10 +14,10 @@ class CreatePhonesTable extends Migration
     {
         Schema::create('phones', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('phone_id');
             $table->string('phonemodel');
             $table->string('phonebrand');
             $table->integer('phonenumber');
+            $table->integer('person_id');
             $table->timestamps();
         });
     }

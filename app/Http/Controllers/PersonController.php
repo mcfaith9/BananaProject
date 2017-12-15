@@ -17,7 +17,8 @@ class PersonController extends Controller
     public function index()
     {
         $phones = Phone::all();
-        return view('assign.person', compact('phones'));   
+        $people = Person::all();
+        return view('assign.pptable', compact('phones','people'));   
     }
    
     /**
@@ -44,9 +45,6 @@ class PersonController extends Controller
        $person->fname = $request->input('fname');
        $person->lname = $request->input('lname');
        $person->address = $request->input('address');
-       $person->phonemodel = $request->input('phonemodel');
-       $person->phonebrand = $request->input('phonebrand');
-
        $file = $request->file('avatar');
 
        if($file != null){
@@ -93,23 +91,7 @@ class PersonController extends Controller
      */
     public function update(Request $request, $id)
     {
-       Task::create([
-       'fname' => $request->input('fname'),
-         'lname' => $request->input('lname'),
-         'address' => $request->input('address'),
-         'avatar' => $request->file('avatar'),
-         'phonemodel' => $request->input('phonemodel'),
-         'phonebrand' => $request->input('phonebrand'),
-          ]);
        
-       $person->fname = $request->input('fname');
-       $person->lname = $request->input('lname');
-       $person->address = $request->input('address');
-       $person->phonemodel = $request->input('phonemodel');
-       $person->phonebrand = $request->input('phonebrand');
-
-       $person ->save();
-       return redirect('pptable');
     }
 
     /**
@@ -125,7 +107,26 @@ class PersonController extends Controller
     }
 
     public function showList(){
-        $people = Person::all();
-        return view('assign.pptable', compact('people')); 
+        $phones = Phone::all()->load('person');
+        return view('assign.pptable', compact('phones'));    
+  }
+
+    public function assign(Request $request)
+    {
+        $update_person = Person::firstOrNew(array(['id' => input('id')]));
+
+        if(is_null($update_person)){
+          return false;
+        }
+        else{
+          $update_person->phone_id = $request->input('phone_id');
+        }
+        $update_person->save();
+/*
+        $person->id = $request->input('id');
+        $person->phone_id = $request->input('phone_id');
+        $person->save();
+*/
+        return redirect('pptable');
     }
 }

@@ -17,8 +17,7 @@ class CreatePeopleTable extends Migration
             $table->string('fname');
             $table->string('lname');
             $table->string('address');
-            $table->string('phonemodel');
-            $table->string('phonebrand');
+            $table->integer('phone_id');
             $table->string('avatar');            
             $table->rememberToken();
             $table->timestamps();
