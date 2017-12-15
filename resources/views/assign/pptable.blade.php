@@ -118,7 +118,7 @@ tr:nth-child(even){background-color: #f2f2f2}
 <form class="assign_person" role="form" method="POST" action="{{ url('/assign') }}">
 {{ csrf_field() }}
 
-<label>Phone Model</label>
+<label style="color: white">Phone Model</label>
  <select id="mySelect" onchange="myFunction1()">
  @foreach($phones as $phone)   
      <option value="{{$phone->id}}">{{ $phone->phonemodel }}
@@ -126,7 +126,7 @@ tr:nth-child(even){background-color: #f2f2f2}
  @endforeach
  </select> 
 
- <label>Assign Phone to Person</label>
+ <label style="color: white">Assign Phone to Person</label>
  <select id="mySelect2" onchange="myFunction2()">
  @foreach($people as $person)   
      <option value="{{$person->id}}" name="" id="">{{ $person->fname }}
@@ -138,11 +138,11 @@ tr:nth-child(even){background-color: #f2f2f2}
             <i class="fa fa-btn fa-paper-plane"></i> Assign
   </button>
 
-  <input type="text" name="phone_id" id="nameplate" value="1">
-  <input type="text" name="person_id" id="nameplate1" value="1">
+  <input type="hidden" name="phone_id" id="nameplate" value="1">
+  <input type="hidden" name="person_id" id="nameplate1" value="1">
 
-  <input type="text" name="id" id="person_id" value="1">
-
+  <input type="hidden" name="id" id="person_id" value="1">
+  <input type="hidden" name="id" id="person_id" value="1">
 
   </form>
 
