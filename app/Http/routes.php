@@ -32,7 +32,7 @@ Route::get('/delete/{id}','PersonController@destroy');
 Route::get('/edit/{id}/edit','PersonController@edit');
 Route::put('/edit/{id}','PersonController@update');
 
-Route::get('/assign', 'PersonController@assign');
+Route::post('/assign', 'PersonController@assign');
 //Route::get('/person','PersonController@create');
 //Route::post('/pptable','PersonController@store');
 //Route::get('/task/{id}/edit','PersonController@edit');

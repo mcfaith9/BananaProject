@@ -57,7 +57,7 @@ class PersonController extends Controller
 
        $person->save();
 
-       return redirect('pptable');
+       return redirect('phone');
     }
 
     /**
@@ -107,26 +107,20 @@ class PersonController extends Controller
     }
 
     public function showList(){
-        $phones = Phone::all()->load('person');
+        $phones = Phone::all();
         return view('assign.pptable', compact('phones'));    
-  }
+    }
 
     public function assign(Request $request)
     {
-        $update_person = Person::firstOrNew(array(['id' => input('id')]));
+        $update_phone_id = Person::find($request->input('id'));
+        $update_phone_id->phone_id = $request->input('phone_id');
 
-        if(is_null($update_person)){
-          return false;
-        }
-        else{
-          $update_person->phone_id = $request->input('phone_id');
-        }
-        $update_person->save();
-/*
-        $person->id = $request->input('id');
-        $person->phone_id = $request->input('phone_id');
-        $person->save();
-*/
+
+        $update_person_id = Phone::find($request->input('id'));
+        $update_person_id->person_id = $request->input('person_id');
+        $update_person_id->save();
+        $update_phone_id->save();
         return redirect('pptable');
     }
 }

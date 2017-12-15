@@ -80,7 +80,6 @@ tr:nth-child(even){background-color: #f2f2f2}
           <th>Address</th>
           <th>Phone Brand</th>
           <th>Phone Model</th>
-          <th>Options</th>
         </tr>
       </thead>
 </table> 
@@ -88,31 +87,17 @@ tr:nth-child(even){background-color: #f2f2f2}
 <div  class="tbl-content">
   <table cellpadding="0" cellspacing="0" border="0">
     <tbody>
-      @forelse($phones as $phone)
+      @foreach($phones as $phone)
         <tr>    
-          <td><img src="/uploads/avatars/{{ $phone->person->avatar }}" style=" height: 32px;  border-radius: 50%;"/> </td>
+          <td><img src="/uploads/avatars/{{ $phone->person ? $phone->person->avatar : 'default.jpg' }}" style=" height: 32px;  border-radius: 50%;"/> </td>
 
-          <td>{{ $phone->person->fname }}</td>
-          <td>{{ $phone->person->lname }}</td>
-          <td>{{ $phone->person->address }}</td>
+          <td>{{ $phone->person ? $phone->person->fname : 'No Owner' }}</td>
+          <td>{{ $phone->person ? $phone->person->lname : 'No Owner' }}</td>
+          <td>{{ $phone->person ? $phone->person->address : 'No Owner' }}</td>
           <td>{{ $phone->phonebrand }}</td>
-          <td>{{ $phone->phonemodel }}</td>  
-
-          <td> 
-           <a href="{{ url('/edit/'.$phone->person->id.'/edit') }}"" style="color: black""> <i class="fa fa-btn fa-pencil"></i>Edit Task</a>  
-            <form action="" method="POST" id="delete">
-                {{ method_field('DELETE') }}
-                {{ csrf_field() }}
-                <a href="{{ url('/delete/'.$phone->person->id) }}" onclick="document.getElementById('delete').submit();" style="color: black"> <i class="fa fa-btn fa-trash"></i>Delete Task</a>
-            </form>
-          </td>
-
-        </tr> 
-      @empty 
-        <tr>
-          <td colspan="3">No Data</td>
-        </tr>         
-      @endforelse
+          <td>{{ $phone->phonemodel }}</td>   
+        </tr>        
+      @endforeach
                  
     </tbody>
   </table>
@@ -144,7 +129,7 @@ tr:nth-child(even){background-color: #f2f2f2}
  <label>Assign Phone to Person</label>
  <select id="mySelect2" onchange="myFunction2()">
  @foreach($people as $person)   
-     <option value="{{$person->phone_id}}" name="" id="">{{ $person->fname }}
+     <option value="{{$person->id}}" name="" id="">{{ $person->fname }}
      </option>
  @endforeach
  </select> 
@@ -154,9 +139,11 @@ tr:nth-child(even){background-color: #f2f2f2}
   </button>
 
   <input type="text" name="phone_id" id="nameplate" value="1">
-
+  <input type="text" name="person_id" id="nameplate1" value="1">
 
   <input type="text" name="id" id="person_id" value="1">
+
+
   </form>
 
 </div>
@@ -168,6 +155,7 @@ tr:nth-child(even){background-color: #f2f2f2}
 function myFunction1() {
    var x = document.getElementById("mySelect").value;
    document.getElementById("nameplate").value = x;
+   document.getElementById("nameplate1").value = x;
 }
 
 function myFunction2() {

@@ -43,7 +43,7 @@ class PhoneController extends Controller
        'phonebrand' => $request->input('phonebrand'),
        'phonenumber' => $request->input('phonenumber')
         ]);
-        return redirect('phone');
+        return redirect('pptable');
     }
 
     /**
